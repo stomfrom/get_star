@@ -1,0 +1,8 @@
+{
+    "activeModules": ["hero", "skills-orb", "project-galaxy"],
+    "comingSoon": ["team-quasar", "ai-constellation"],
+    "moduleSettings": {
+      "hero": { "autoplay": true, "particleCount": 5000 },
+      "project-galaxy": { "maxStars": 20 }
+    }
+}

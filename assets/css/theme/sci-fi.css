@@ -1,0 +1,43 @@
+/*主科幻风格*/
+:root {
+    --stardust-color: #00f3ff; /* 星尘蓝 */
+    --nebula-purple: #9d00ff;
+    --event-horizon: #1a1a2e; /* 深空底色 */
+    --pulsar-yellow: #ffee00;
+  }
+  
+  .starfield-bg {
+    background: radial-gradient(
+      ellipse at center, 
+      var(--event-horizon) 0%,
+      #000 100%
+    );
+    background-attachment: fixed;
+  }
+  
+  .neon-text {
+    text-shadow: 
+      0 0 5px var(--stardust-color),
+      0 0 15px var(--nebula-purple);
+    animation: pulse 2s infinite alternate;
+  }
+  
+  @keyframes pulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
+  }
+  /* 在sci-fi.css中添加 */
+  @media (max-width: 768px) {
+    #particle-network {
+      display: none; /* 移动端禁用WebGL粒子 */
+    }
+    .starfield-bg {
+      background: radial-gradient(circle at center, #000 0%, #1a1a2e 100%);
+    }
+  }
+  /* 添加到sci-fi.css */
+  #particle-network {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  }

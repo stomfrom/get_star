@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="sci-fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>摘星 | 探索数字宇宙的边界</title>
+  <link rel="stylesheet" href="/assets/css/theme/sci-fi.css" id="theme-css">
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="/assets/js/modules/particleNetwork.js" as="script">
+  <!-- 在现有preload下方添加 -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.module.js" as="script" crossorigin>
+</head>
+
+<!-- 将粒子画布和星空背景整合到body -->
+<body class="starfield-bg">
+  <!-- 主粒子画布（覆盖整个视口） -->
+  <canvas id="particle-network" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+
+  <!-- 星座导航系统（在粒子层之上） -->
+  <nav id="constellation-nav" class="floating-nav" style="z-index: 10;">
+    <!-- 导航内容保持不变 -->
+  </nav>
+
+  <main class="scifi-scroll-container">
+    <!-- 1. 全屏英雄区（叠加在粒子背景上） -->
+    <section id="hero" class="parallax-section" style="position: relative; z-index: 5;">
+      <!-- 移除原canvas声明（已迁移到body) -->
+      <div class="starburst-overlay"></div>
+      <h1 class="neon-text" data-text="摘星">摘星</h1>
+      <p class="typewriter-text" data-speed="50">// 为人类文明搭建通向外星的数字阶梯</p>
+      <div class="scroll-pulse-indicator"></div>
+    </section>
+
+    <!-- 其他区块保持不变... -->
+  </main>
+
+  <!-- 脚本加载优化 -->
+  <script type="module">
+    import { initParticleNetwork } from '/assets/js/modules/particleNetwork.js';
+    import { initStarfield } from '/assets/js/modules/starfield.js';
+    
+    // 确保DOM和关键资源就绪后初始化
+    Promise.all([
+      document.fonts.ready,
+      new Promise(resolve => {
+        if (document.readyState === 'complete') resolve();
+        else window.addEventListener('load', resolve);
+      })
+    ]).then(() => {
+      initParticleNetwork();
+      initStarfield();
+    }).catch(console.error);
+  </script>
+</body>
+</html>
